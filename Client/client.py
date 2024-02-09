@@ -6,10 +6,6 @@ ip = '192.168.0.59' #ip server
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(('rasp5', 5000))
 
-data = "hau"
-
-
 
 while True:
-    #(s.recv(1024).decode('utf-8'))
-    s.send(bytes(data, 'utf-8'))
+    (s.recv(1024).decode('utf-8'))
