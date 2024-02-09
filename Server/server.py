@@ -39,4 +39,7 @@ def sendData():
   #  clientsocket.send(bytes('a', 'utf-8'))
    # Timer(1, background_controller).start()
 
+canConnect()
+sendData()
+
 
