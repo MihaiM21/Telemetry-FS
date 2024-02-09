@@ -1,3 +1,5 @@
+#car script
+from can import CanSocket
 import socket
 from threading import Thread, Timer
 

@@ -1,4 +1,4 @@
-#Script has to run in
+#Script has to run outside the car
 
 import socket
 
