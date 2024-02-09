@@ -1,16 +1,16 @@
-#car script
+# Car script
 from can import CanSocket
 import socket
 from threading import Thread, Timer
 
-#Server Initializing
+# Server Initializing
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(('', 5000))
-s.listen(1) #listening every 1 second
+s.listen(1) # Listening every 1 second
 print('Server started')
 
-#CAN interface
-can_socket = CanSocket("can0")#can interface name
+# CAN interface
+can_socket = CanSocket("can0") # Can interface name
 
 def canConnect():
     try:
@@ -30,7 +30,7 @@ def sendData():
         except socket.error as e:
             print(f"Error receiving CAN message: {e}")
 
-        #sending data
+        # Sending data
         clientsocket.send(bytes(data, "utf-8"))
 
 canConnect()

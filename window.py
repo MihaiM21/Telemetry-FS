@@ -9,8 +9,6 @@ class MyGui(QMainWindow):
         uic.loadUi('test.ui', self)
         self.show()
 
-        
-
 
     def changeColorBrakeBar(self):
         self.brakeBar.setStyleSheet("QProgressBar::chunk "
