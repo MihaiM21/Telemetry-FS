@@ -8,4 +8,4 @@ s.connect(('rasp5', 5000))
 
 
 while True:
-    (s.recv(1024).decode('utf-8'))
+    print(s.recv(1024).decode('utf-8'))
