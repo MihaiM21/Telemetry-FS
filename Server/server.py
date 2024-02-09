@@ -14,12 +14,8 @@ def background_controller(userInput):
     clientsocket.send(bytes(data, 'utf-8'))
     Timer(1, background_controller).start()
 
-    userInput = input("Enter something to send or 'q' to quit: ")
-
 
 while True:
     clientsocket, address = s.accept()
     print(f'Connection from {address} has been established.')
     background_controller(user_input)
-    if user_input != '':
-        break
