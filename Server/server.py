@@ -12,8 +12,11 @@ def background_controller():
     clientsocket.send(bytes(message, 'utf-8'))
     Timer(1, background_controller).start()
 
+def receiveData():
+    print(s.recv(1024).decode('utf-8'))
 
 while True:
     clientsocket, address = s.accept()
     print(f'Connection from {address} has been established.')
-    background_controller()
+    #background_controller()
+    receiveData()
