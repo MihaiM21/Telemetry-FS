@@ -20,24 +20,18 @@ def canConnect():
         exit(1)
 
 def sendData():
+    clientsocket, address = s.accept()
+    print(f'Connection from {address} has been established.')
     while True:
         try:
-            message = can_socket.recv()
-            print(f"Message received: {message}")
-            print(f"Sending message: {message}")
+            data = can_socket.recv()
+            print(f"Data received from CAN: {data}")
+            print(f"Sending message: {data}")
         except socket.error as e:
             print(f"Error receiving CAN message: {e}")
 
         #sending data
-        clientsocket, address = s.accept()
-        print(f'Connection from {address} has been established.')
-        clientsocket.send(bytes(message, "utf-8"))
-
-#def background_controller(userInput):
- #   print("Sending: ")
-  #  print('a')
-  #  clientsocket.send(bytes('a', 'utf-8'))
-   # Timer(1, background_controller).start()
+        clientsocket.send(bytes(data, "utf-8"))
 
 canConnect()
 sendData()
