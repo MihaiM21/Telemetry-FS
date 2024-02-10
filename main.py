@@ -24,5 +24,6 @@ def sendData():
             clientsocket.send(bytes(data_str, "utf-8"))
         except socket.error as e:
             print(f"Error sending CAN message data: {e}")
+            break
 
 sendData()
