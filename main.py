@@ -1,4 +1,4 @@
-# Car script
+# Car script TESTING ONLY
 import socket
 from threading import Thread, Timer
 

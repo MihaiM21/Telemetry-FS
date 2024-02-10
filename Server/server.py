@@ -8,19 +8,12 @@ import can
 
 # Server Initializing
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s.bind(('', 5000))
-s.listen(1) # Listening every 1 second
-print('Server started')
 
 # Create a CAN interface using the socketcan backend
 can_interface = can.Bus(bustype='socketcan', channel='can0')
 
-def canConnect():
-    try:
-        pass
-    except socket.error as e:
-        print(f"Error binding to Can interface: {e}")
-        exit(1)
 
 def sendData():
     clientsocket, address = s.accept()
@@ -45,5 +38,15 @@ def sendData():
         except can.CanError as e:
             print(f"Error receiving CAN message: {e}")
 
-canConnect()
-sendData()
+def standBy():
+    aux = input("Press y to start the server. Press q to quit.")
+    if aux == 'y':
+
+        s.listen(1)  # Listening every 1 second
+        print('Server started')
+        print('Waiting for connection')
+        sendData()
+    elif aux == 'q':
+        exit()
+
+standBy()
