@@ -1,8 +1,6 @@
 # Car script
-
 import socket
 from threading import Thread, Timer
-
 from requests import packages
 import can
 
@@ -13,7 +11,6 @@ s.bind(('', 5000))
 
 # Create a CAN interface using the socketcan backend
 can_interface = can.Bus(bustype='socketcan', channel='can0')
-
 
 def sendData():
     clientsocket, address = s.accept()
