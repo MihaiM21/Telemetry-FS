@@ -17,7 +17,7 @@ def sendData():
             msg_data = {"arbitration_id": 0x123, "data": [0x45, 0x67, 0x89, 0xAB]}
             # Convert the CAN message data to a string
             data_str = ' '.join([f"{b:02x}" for b in msg_data['data']])
-            print(f"Data received from CAN: {data_str}")
+            print(f"Data received from CAN: {msg_data['arbitration_id']} {msg_data['data']}")
             print(f"Sending message: {data_str}")
 
             # Send the CAN message data over the socket connection
