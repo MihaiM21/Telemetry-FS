@@ -16,12 +16,12 @@ def sendData():
             # Generate sample CAN message data
             msg_data = {"arbitration_id": 0x123, "data": [0x45, 0x67, 0x89, 0xAB]}
             # Convert the CAN message data to a string
-            data = f"{msg_data['arbitration_id']:08x} {msg_data['data'].hex()}"
-            print(f"Data received from CAN: {data}")
-            print(f"Sending message: {data}")
+            data_str = ' '.join([f"{b:02x}" for b in msg_data['data']])
+            print(f"Data received from CAN: {data_str}")
+            print(f"Sending message: {data_str}")
 
             # Send the CAN message data over the socket connection
-            clientsocket.send(bytes(data, "utf-8"))
+            clientsocket.send(bytes(data_str, "utf-8"))
         except socket.error as e:
             print(f"Error sending CAN message data: {e}")
 
