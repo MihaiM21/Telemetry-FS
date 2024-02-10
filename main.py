@@ -4,6 +4,7 @@ from threading import Thread, Timer
 
 # Server Initializing
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s.bind(('', 5000))
 s.listen(1) # Listening every 1 second
 print('Server started')
