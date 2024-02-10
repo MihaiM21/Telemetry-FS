@@ -10,7 +10,7 @@ s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s.bind(('', 5000))
 
 # Create a CAN interface using the socketcan backend
-can_interface = can.Bus(bustype='socketcan', channel='can0')
+can_interface = can.interface.Bus(bustype='socketcan', channel='can0')
 
 def sendData():
     clientsocket, address = s.accept()
