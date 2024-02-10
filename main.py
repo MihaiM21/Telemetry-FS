@@ -9,11 +9,11 @@ s.listen(1) # Listening every 1 second
 print('Server started')
 print('Waiting for connection')
 
-true = True
 def sendData():
+    test = True
     clientsocket, address = s.accept()
     print(f'Connection from {address} has been established.')
-    while true:
+    while test:
         try:
             # Generate sample CAN message data
             msg_data = {"arbitration_id": 0x123, "data": [0x45, 0x67, 0x89, 0xAB]}
@@ -26,6 +26,6 @@ def sendData():
             clientsocket.send(bytes(data_str, "utf-8"))
         except socket.error as e:
             print(f"Error sending CAN message data: {e}")
-            true = False
+            test = False
 
 sendData()
