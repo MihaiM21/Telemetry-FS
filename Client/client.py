@@ -2,7 +2,9 @@
 
 import socket
 import can
-import binascii
+import window
+import threading
+
 
 print('Starting Client.')
 print('Connecting to server...')
@@ -11,6 +13,14 @@ server = ('rasp5',5000)
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect(server)
 
+# Data save
+throttle_percentage = 0;
+brake_percentage = 0;
+
+gui = None
+def start_gui():
+    global gui
+    gui = window.startWindow()
 def decode_can_message(data):
     # Remove spaces from the data string
     data = data.replace(' ', '')
@@ -24,7 +34,7 @@ def decode_can_message(data):
     # Create a new CAN message using the extracted data and ID
     message = can.Message(arbitration_id=arbitration_id, data=data)
     return message
-def main():
+def handle_message():
     while True:
         # 8 sau 12 in functie de can 11/29 cu 11 e bine
         # Receive the CAN message data over the socket connection
@@ -32,6 +42,26 @@ def main():
 
         # Decode the CAN message
         message = decode_can_message(data)
+
+        # If statements pentru fiecare functie care actualizeaza GUI
+
+
+        # Printing messages received from server
         print(message)
+
+def inputThrottleData(data):
+    global throttle_percentage
+    throttle_percentage = data
+    global gui
+    gui.update_progress_bars(throttle_percentage)
+
+
+
+def main():
+    can_thread = threading.Thread(target=handle_message, args=())
+    can_thread.start()
+    gui_thread = threading.Thread(target=start_gui, args=())
+    gui_thread.start()
+
 
 main()

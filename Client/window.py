@@ -2,6 +2,7 @@ from PyQt5 import uic, QtGui, QtCore
 from PyQt5.QtGui import QPalette
 from PyQt5.QtWidgets import *
 
+
 class MyGui(QMainWindow):
 
     def __init__(self):
@@ -15,11 +16,24 @@ class MyGui(QMainWindow):
                                     "{"
                                     "background-color: red;"
                                     "}")
-def main():
-    app = QApplication([])
-    window = MyGui()
-    window.changeColorBrakeBar()
-    app.exec_()
 
-if __name__ == '__main__':
-    main()
+    def changeThrottlePercentage(self, percentage):
+        self.throttle_percentage = percentage
+
+    def changeBrakePercentage(self, percentage):
+        self.brake_percentage = percentage
+
+    def update_progress_bars(self,t):
+
+        self.throttleBar.setValue(t)
+
+
+
+def startWindow():
+    app = QApplication([])
+    gui = MyGui()
+    gui.changeColorBrakeBar()
+    app.exec_()
+    gui.show()
+    return gui
+

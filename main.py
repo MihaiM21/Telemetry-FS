@@ -30,7 +30,7 @@ def standBy():
     aux = input("Press y to start the server. Press q to quit.")
     if aux == 'y':
 
-        s.listen(1)  # Listening every 1 second
+        s.listen(5)  # Listening every 1 second
         print('Server started')
         print('Waiting for connection')
         sendData()
