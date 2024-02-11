@@ -53,7 +53,13 @@ def inputThrottleData(data):
     global throttle_percentage
     throttle_percentage = data
     global gui
-    gui.update_progress_bars(throttle_percentage)
+    gui.changeThrottlePercentage(throttle_percentage)
+
+def inputBrakeData(data):
+    global brake_percentage
+    brake_percentage = data
+    global gui
+    gui.changeBrakePercentage(brake_percentage)
 
 
 

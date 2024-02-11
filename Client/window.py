@@ -23,9 +23,6 @@ class MyGui(QMainWindow):
     def changeBrakePercentage(self, percentage):
         self.brake_percentage = percentage
 
-    def update_progress_bars(self,t):
-
-        self.throttleBar.setValue(t)
 
 
 
