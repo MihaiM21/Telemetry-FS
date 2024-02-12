@@ -57,7 +57,7 @@
      <attribute name="title">
       <string>Main</string>
      </attribute>
-     <widget class="QLCDNumber" name="speed">
+     <widget class="QLCDNumber" name="speedLCD">
       <property name="geometry">
        <rect>
         <x>350</x>

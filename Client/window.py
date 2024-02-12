@@ -23,6 +23,9 @@ class MyGui(QMainWindow):
     def changeBrakePercentage(self, percentage):
         self.brake_percentage = percentage
 
+    def changeSpeed(self, speed):
+        self.speedLCD.value = speed
+
 
 
 
