@@ -11,7 +11,7 @@ print('Connecting to server...')
 # Server to connect
 server = ('rasp5',5000)
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(server)
+
 
 gui = None
 
@@ -75,6 +75,10 @@ def handle_message():
 
 # Folosirea threadurilor pentru a putea actualiza si GUI si a putea primi date simultan
 def main():
+    # Conencting to server
+    s.connect(server)
+    gui.statusLabel.setText('Connected to server')
+
     can_thread = threading.Thread(target=handle_message, args=())
     can_thread.start()
     gui_thread = threading.Thread(target=start_gui, args=())
